@@ -19,6 +19,9 @@ describe('App', () => {
 		expect(wrapper.text()).to.include('<CatComponent />');
 	});
 
+	it('should include the grace-hopper-quote component', () => {
+		expect(wrapper.text()).to.include('<GraceHopperQuoteComponent />');
+	});
 
 	it('should include the mouse component', () => {
 		expect(wrapper.text()).to.include('<MouseComponent />');
@@ -28,5 +31,10 @@ describe('App', () => {
 		expect(wrapper.children()).to.have.length(3);
 	});
 
-	
+	it('should render the components in the proper order', () => {
+		const [first, second, third] = wrapper.children();
+		expect(first.type.name === 'CatComponent').to.be.true;
+		expect(second.type.name === 'GraceHopperQuoteComponent').to.be.true;
+		expect(third.type.name === 'MouseComponent').to.be.true;
+	});
 });
